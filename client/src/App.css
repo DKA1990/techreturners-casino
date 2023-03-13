@@ -2,17 +2,18 @@
   --green: #35654d;
 }
 
+body {
+  margin: 0;
+}
+
 .App {
   text-align: center;
 }
 
-.App-header {
+.table {
   background-color: var(--green);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
 }

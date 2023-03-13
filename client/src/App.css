@@ -1,0 +1,19 @@
+:root {
+  --green: #35654d;
+}
+
+body {
+  margin: 0;
+}
+
+.App {
+  text-align: center;
+}
+
+.table {
+  background-color: var(--green);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}

@@ -6,15 +6,15 @@ let playerHand: Card[] = [];
 
 export const getGameState = () => {
     return gameState;
-}
+};
 
 export const setGameState = (state: GameState) => {
     gameState = state;
-}
+};
 
 export const getDeckId = () => {
     return deckId;
-}
+};
 
 export const setDeckId = (id: string) => {
     deckId = id;
@@ -22,8 +22,13 @@ export const setDeckId = (id: string) => {
 
 export const getPlayerHand = () => {
     return playerHand;
-}
+};
 
 export const setPlayerHand = (card: Card) => {
     playerHand.push(card);
+};
+
+export const resetPlayerHand = () => {
+    // Actually clears array? Check this!
+    playerHand.length = 0;
 };

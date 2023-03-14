@@ -1,7 +1,8 @@
-import { setPlayerHand, getPlayerHand, getDeckId } from "./current-state";
+import { getDeckId } from "./current-state";
 import { Card, PointValue, Value } from "../types/game-types";
 
 export async function drawCards(numOfCards: 1 | 2) {
+    const drawnCards: Card[] = [];
     const apiDraw = await fetch (`https://deckofcardsapi.com/api/deck/${getDeckId()}/draw/?count=${numOfCards}`);
     const json = await apiDraw.json();
     if (json.success === true) {
@@ -20,14 +21,13 @@ export async function drawCards(numOfCards: 1 | 2) {
                         return parseInt(val) as PointValue;
                 }
             };
-            const drawnCard: Card = {
+            drawnCards.push({
                 value: card.value,
                 suit: card.suit,
                 pointValue: pointValue(card.value),
                 image: card.image
-            }            
-            setPlayerHand(drawnCard);
+            });            
         });
-        console.log(getPlayerHand());
     }
+    return drawnCards;
 };

@@ -24,8 +24,8 @@ export const getPlayerHand = () => {
     return playerHand;
 };
 
-export const setPlayerHand = (card: Card) => {
-    playerHand.push(card);
+export const setPlayerHand = (card: Card[]) => {
+    playerHand.push(...card);
 };
 
 export const resetPlayerHand = () => {

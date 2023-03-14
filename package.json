@@ -10,7 +10,7 @@
 		"start-client": "cd client && npm start",
 		"start-server": "cd server && npm start",
 		"test-client": "cd client && npm test",
-		"test-server": "cd server && npm test",
+		"test-server": "jest ./server",
 		"start": "concurrently -n client,server -c cyan,magenta \"npm run start-client\" \"npm run start-server\"",
 		"prepare": "cd client && npm install",
 		"prettier": "npx prettier --write",

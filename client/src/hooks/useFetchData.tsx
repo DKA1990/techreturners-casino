@@ -10,6 +10,13 @@ export function useFetchData<TResponse>(url: string) {
   const [error, setError] = useState("");
   const [status, setStatus] = useState<number>();
 
+  const [toCallApi, setApiExecution] = useState(false);
+
+  const execute = () => {
+    console.log("executing now");
+    setApiExecution(true);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -27,8 +34,11 @@ export function useFetchData<TResponse>(url: string) {
         setIsFetching(false);
       }
     };
-    fetchData();
-  }, [url]);
+    if(toCallApi) {
+      console.log("calling api");
+      fetchData();
+    }
+  }, [url, toCallApi]);
 
-  return { data, isFetching, error, status };
+  return { data, isFetching, error, status, execute };
 }

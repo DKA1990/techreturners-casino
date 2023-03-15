@@ -1,5 +1,5 @@
 import { getDeckId } from "./current-state";
-import { Card, PointValue, Value } from "../types/game-types";
+import { Card, PointValue } from "../types/game-types";
 
 export async function drawCards(numOfCards: 1 | 2, hand?: Card[]) {
     const drawnCards: Card[] = [];

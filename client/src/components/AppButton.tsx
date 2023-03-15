@@ -1,11 +1,11 @@
 import React from "react";
 
-type Props = React.DetailedHTMLProps<
+export type Props = React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
-> & {};
+> & { disabled?: boolean };
 
 const AppButton = (props: Props) => {
-  return <button {...props}>Hit</button>;
+  return <button {...props} />;
 };
 export default AppButton;

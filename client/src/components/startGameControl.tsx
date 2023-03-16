@@ -7,6 +7,8 @@ import {
   Card,
 } from "../types/game-types";
 import AppButton from './AppButton';
+import '../styles/AppButton.css'
+
 
 export const StartGameControl : React.FC = () => {
     const { stateOfGame, setStateOfGame, cards, setCards } = useGame();
@@ -37,6 +39,6 @@ export const StartGameControl : React.FC = () => {
     }
 
     return (
-        <AppButton onClick={handleClick}>Start Game</AppButton>
+        <AppButton className='new-game-btn' onClick={handleClick}>Start Game</AppButton>
     )
 }

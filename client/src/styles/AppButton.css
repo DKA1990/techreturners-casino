@@ -1,0 +1,23 @@
+
+.new-game-btn {
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .new-game-btn:hover {
+    background-color: #fff;
+    color: #000;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .new-game-btn {
+      font-size: 1rem;
+      padding: 0.25rem 0.5rem;
+    }
+  }

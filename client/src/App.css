@@ -1,9 +1,13 @@
 :root {
   --green: #35654d;
+  --title-text: 'Rye', cursive;
+  --body-text: 'Quicksand', sans-serif;
 }
 
 body {
   margin: 0;
+  background-color: var(--green);
+  font-family: var(--body-text);
 }
 
 .App {
@@ -11,9 +15,14 @@ body {
 }
 
 .table {
-  background-color: var(--green);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  color: white;
+}
+
+.main-title {
+  font-family: var(--title-text);
+  font-size: 3rem;
   color: white;
 }

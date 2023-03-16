@@ -7,7 +7,7 @@ import { Table } from "./components/table";
 function App() {
   return (
     <div className="App">
-      <h1>TechReturners Casino</h1>
+      <h1 className="main-title">TechReturners Casino</h1>
       <GameProvider>
         <Table />
       </GameProvider>

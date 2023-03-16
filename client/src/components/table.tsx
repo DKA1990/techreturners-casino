@@ -15,7 +15,9 @@ export const Table: React.FC = () => {
       <div>
         <p>{stateOfGame}</p>
         {cards.length >= 1 && <p>Cards</p>}
-        {cards.map(card => (<p>{card.suit}</p>))}
+        {cards.map((card, index) => (
+          <p key={index}>{card.suit}</p>
+        ))}
       </div>
     </main>
   );

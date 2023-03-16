@@ -8,7 +8,7 @@ import {
 } from "../types/game-types";
 import AppButton from './AppButton';
 
-export const NewGame : React.FC = () => {
+export const StartGameControl : React.FC = () => {
     const { stateOfGame, setStateOfGame, cards, setCards } = useGame();
 
     const { data, isFetching, error, status, execute } = useFetchData("http://localhost:8080/startgame");

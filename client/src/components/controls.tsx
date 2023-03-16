@@ -1,13 +1,13 @@
 import React from 'react';
 import { useGame } from "../context/game_provider";
-import { NewGame } from './newGame';
+import { StartGameControl } from './startGameControl';
 
 export const Controls : React.FC = () => {
     const { stateOfGame } = useGame();
 
     return (
         <div>
-            {stateOfGame === "new" && <NewGame />}
+            {stateOfGame === "new" && <StartGameControl />}
             {/* stateOfGame === "INPLAY" && <InPlay controls />*/}
             {/* stateOfGame === "Standing" && <Standing controls />*/}
             {/* stateOfGame === "BlackJack" && <BlackJack controls />*/}

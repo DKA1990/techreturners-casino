@@ -5,7 +5,7 @@ import { determineWinner } from "./winner";
 export async function stand() {
     hasBust(getPlayerHand()) ? setGameState("BUST") : setGameState("STANDING");
     if (getGameState() !== "BUST") {
-        determineWinner();
+        await determineWinner();
     }
 
     return {

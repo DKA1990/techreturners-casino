@@ -53,6 +53,26 @@ test('GET /stand should return json containing the current hand and game state "
   expect(res.statusCode).toEqual(200);
   expect(res.body).toEqual({
     cards: [],
-    stateOfGame: "STANDING",
+    dealerCards: [
+      {
+        value: "8",
+        suit: "HEARTS",
+        pointValue: 8,
+        image: "https://deckofcardsapi.com/static/img/8H.png"
+      },
+      {
+        value: "8",
+        suit: "HEARTS",
+        pointValue: 8,
+        image: "https://deckofcardsapi.com/static/img/8H.png"
+      },
+      {
+        value: "8",
+        suit: "HEARTS",
+        pointValue: 8,
+        image: "https://deckofcardsapi.com/static/img/8H.png"
+      }
+    ],
+    stateOfGame: "WIN",
   });
 });

@@ -2,6 +2,7 @@ import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import request from 'supertest';
 import { app } from '../app';
+import * as gameState from '../services/current-state';
 
 const cardServer = setupServer(
     rest.get('https://deckofcardsapi.com/api/deck/new/shuffle/', (req, res, ctx) => {
@@ -72,6 +73,14 @@ test('GET /startgame should return json containing two cards and game state "INP
                 "image": "https://deckofcardsapi.com/static/img/8D.png"
             }
         ],
+        dealerCards: [
+            {
+                "value": "3",
+                "suit": "CLUBS",
+                "pointValue": 3,
+                "image": "https://deckofcardsapi.com/static/img/3C.png"
+            }
+        ],
         "stateOfGame": "INPLAY"
     });
 });
@@ -108,6 +117,23 @@ test('GET /startgame should return json containing two cards and game state "BLA
             }));
         })
     );
+    
+    jest.spyOn(gameState, "getDealerHand").mockImplementation(() => {
+        return [
+            {
+                value: "2",
+                suit: "CLUBS",
+                pointValue: 2,
+                image: "https://deckofcardsapi.com/static/img/2C.png"
+            },
+            {
+                value: "JACK",
+                suit: "DIAMONDS",
+                pointValue: 10,
+                image: "https://deckofcardsapi.com/static/img/JD.png"
+            }
+        ]
+    })
 
     const res = await request(app).get('/startgame');
 
@@ -125,6 +151,20 @@ test('GET /startgame should return json containing two cards and game state "BLA
                 "suit": "DIAMONDS",
                 "pointValue": 10,
                 "image": "https://deckofcardsapi.com/static/img/KD.png"
+            }
+        ],
+        dealerCards: [
+            {
+                "value": "2",
+                "suit": "CLUBS",
+                "pointValue": 2,
+                "image": "https://deckofcardsapi.com/static/img/2C.png"
+            },
+            {
+                "value": "JACK",
+                "suit": "DIAMONDS",
+                "pointValue": 10,
+                "image": "https://deckofcardsapi.com/static/img/JD.png"
             }
         ],
         "stateOfGame": "BLACKJACK"
@@ -164,6 +204,23 @@ test('If GET /startgame returns json containing two cards which are both aces, g
         })
     );
 
+    jest.spyOn(gameState, "getDealerHand").mockImplementation(() => {
+        return [
+            {
+                value: "2",
+                suit: "CLUBS",
+                pointValue: 2,
+                image: "https://deckofcardsapi.com/static/img/2C.png"
+            },
+            {
+                value: "JACK",
+                suit: "DIAMONDS",
+                pointValue: 10,
+                image: "https://deckofcardsapi.com/static/img/JD.png"
+            }
+        ]
+    })
+
     const res = await request(app).get('/startgame');
 
     expect(res.statusCode).toEqual(200);
@@ -180,6 +237,14 @@ test('If GET /startgame returns json containing two cards which are both aces, g
                 "suit": "DIAMONDS",
                 "pointValue": 1,
                 "image": "https://deckofcardsapi.com/static/img/AD.png"
+            }
+        ],
+        dealerCards: [
+            {
+                "value": "2",
+                "suit": "CLUBS",
+                "pointValue": 2,
+                "image": "https://deckofcardsapi.com/static/img/2C.png"
             }
         ],
         "stateOfGame": "INPLAY"

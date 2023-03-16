@@ -1,23 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useGame } from "../context/game_provider";
-import { NewGame } from "./newGame";
+import { Controls } from "./controls";
 
 export const Table: React.FC = () => {
-  const { stateOfGame, setStateOfGame, cards, setCards } = useGame();
+  const { stateOfGame, cards } = useGame();
 
   console.log(`stateGame is ${stateOfGame}`);
 
   return (
     <main className="table">
-      {stateOfGame === "new" ? (
-        <NewGame />
-      ) : (
-        <div>
-          <p>Cards</p>
-          <p>{stateOfGame}</p>
-          <p>{cards && cards[0].suit}</p>
-        </div>
-      )}
+      <Controls />
+      {/** The following code is placeholder and needs to be refactored into a hand component */}
+      {/** TO DO: loading and error states to be considered */}
+      <div>
+        <p>{stateOfGame}</p>
+        {cards.length >= 1 && <p>Cards</p>}
+        {cards.map(card => (<p>{card.suit}</p>))}
+      </div>
     </main>
   );
 };

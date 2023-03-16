@@ -43,7 +43,7 @@ test("renders a start button when the table is first rendered / the state of gam
       <Table />
     </GameProvider>
   );
-  const tableState = screen.getByText("Start Button");
+  const tableState = screen.getByText("Start Game");
   expect(tableState).toBeInTheDocument();
 });
 
@@ -55,7 +55,7 @@ then the cards are displayed`, async () => {
       <Table />
     </GameProvider>
   );
-  const startButton = screen.getByText("Start Button");
+  const startButton = screen.getByText("Start Game");
   userEvent.click(startButton);
   await waitFor(() => screen.findByText("Cards"));
   expect(screen.getByText("INPLAY")).toBeInTheDocument();

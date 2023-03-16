@@ -6,6 +6,7 @@ import {
   isSuccessResponse,
   Card,
 } from "../types/game-types";
+import AppButton from './AppButton';
 
 export const NewGame : React.FC = () => {
     const { stateOfGame, setStateOfGame, cards, setCards } = useGame();
@@ -36,6 +37,6 @@ export const NewGame : React.FC = () => {
     }
 
     return (
-        <button onClick={handleClick}>Start Button</button>
+        <AppButton onClick={handleClick}>Start Game</AppButton>
     )
 }

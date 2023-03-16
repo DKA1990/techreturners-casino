@@ -36,7 +36,7 @@ afterAll(() => {
     cardServer.close();
 });
 
-test('GET /hit should return json containing one card and game state "INPLAY"', async () => {
+test('GET /hit on an empty hand should return json containing one card and game state "INPLAY"', async () => {
     jest.spyOn(gameState, "getDeckId").mockImplementation(() => {
         return "dvjw5ozpn8h4";
     });
@@ -59,7 +59,7 @@ test('GET /hit should return json containing one card and game state "INPLAY"', 
     });
 });
 
-test('GET /hit should return json containing one card and game state "BUST" when hand total is over 21', async () => {
+test('GET /hit should return json containing the full hand of cards and game state "BUST" when hand total is over 21', async () => {
     jest.spyOn(gameState, "getDeckId").mockImplementation(() => {
         return "dvjw5ozpn8h4";
     });

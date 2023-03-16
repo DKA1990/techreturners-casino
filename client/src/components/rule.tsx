@@ -10,7 +10,9 @@ export const Rules: React.FC = () => {
 
   return (
     <section className="blackjack-rules">
-      <AppButton onClick={handleRules}>Show Rules</AppButton>
+      <AppButton onClick={handleRules}>
+        {showRules ? "Hide Rules" : "Show Rules"}
+      </AppButton>
       {showRules && (
         <>
           <h2>BlackJack Rules</h2>

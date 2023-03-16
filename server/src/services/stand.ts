@@ -8,8 +8,9 @@ export async function stand() {
         await drawDealerCards();
         const playerValue = getPlayerHand().reduce((acc, cur) => acc + cur.pointValue, 0);
         const dealerValue = getDealerHand().reduce((acc, cur) => acc + cur.pointValue, 0);
-        (playerValue > dealerValue) ? setGameState("WIN") : 
-            (playerValue < dealerValue) ? setGameState("LOSE") : setGameState("DRAW");
+        (dealerValue > 21) ? setGameState("WIN") :
+            (playerValue > dealerValue) ? setGameState("WIN") : 
+                (playerValue < dealerValue) ? setGameState("LOSE") : setGameState("DRAW");
     }
 
     return {

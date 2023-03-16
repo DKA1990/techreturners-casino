@@ -21,3 +21,16 @@ export interface Card {
   pointValue: PointValue;
   image: string;
 }
+
+export interface StartGameResponse {
+  stateOfGame: GameState;
+  cards: Array<Card>;
+}
+
+export function isSuccessResponse(data: unknown): data is StartGameResponse {
+  return (
+    data !== undefined &&
+    (data as StartGameResponse).stateOfGame !== undefined &&
+    (data as StartGameResponse).cards !== undefined
+  );
+}

@@ -1,4 +1,4 @@
-import { getDeckId } from "./current-state";
+import { getDealerHand, getDeckId, setDealerHand } from "./current-state";
 import { Card, PointValue } from "../types/game-types";
 
 export async function drawCards(numOfCards: 1 | 2, hand?: Card[]) {
@@ -45,4 +45,17 @@ export async function drawCards(numOfCards: 1 | 2, hand?: Card[]) {
         });
     }
     return drawnCards;
+};
+
+// Dealer draws cards if hand value is less than 17
+export async function drawDealerCards() {
+    let dealerValue = getDealerHand().reduce((acc, cur) => acc + cur.pointValue, 0);
+    while (dealerValue < 17) {
+        const drawnCard = await drawCards(1, getDealerHand());
+        if (drawnCard.length === 0) {
+            break;
+        }
+        setDealerHand(drawnCard);
+        dealerValue = dealerValue + drawnCard[0].pointValue;
+    }
 };

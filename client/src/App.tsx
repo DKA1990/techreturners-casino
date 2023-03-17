@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { GameProvider } from "./context/game_provider";
 import { Table } from "./components/table";
+import { Rules } from "./components/rule";
 
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
     <div className="App">
       <h1 className="main-title">TechReturners Casino</h1>
       <GameProvider>
+        <Rules />
         <Table />
       </GameProvider>
     </div>

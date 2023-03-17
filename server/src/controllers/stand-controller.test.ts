@@ -46,13 +46,43 @@ test('GET /stand should return json containing the current hand and game state "
     return "dvjw5ozpn8h4";
   });
 
+  jest.spyOn(gameState, "getPlayerHand").mockImplementation(() => {
+    return [
+      {
+        value: "8",
+        suit: "HEARTS",
+        pointValue: 8,
+        image: "https://deckofcardsapi.com/static/img/8H.png"
+      },
+      {
+        value: "3",
+        suit: "CLUBS",
+        pointValue: 3,
+        image: "https://deckofcardsapi.com/static/img/3C.png"
+      } 
+    ]
+  });
+
   gameState.resetPlayerHand();
 
   const res = await request(app).get("/stand");
 
   expect(res.statusCode).toEqual(200);
   expect(res.body).toEqual({
-    cards: [],
+    cards: [
+      {
+        value: "8",
+        suit: "HEARTS",
+        pointValue: 8,
+        image: "https://deckofcardsapi.com/static/img/8H.png"
+      },
+      {
+        value: "3",
+        suit: "CLUBS",
+        pointValue: 3,
+        image: "https://deckofcardsapi.com/static/img/3C.png"
+      }
+    ],
     dealerCards: [
       {
         value: "8",

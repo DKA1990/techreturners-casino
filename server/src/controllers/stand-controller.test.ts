@@ -41,6 +41,30 @@ afterAll(() => {
   cardServer.close();
 });
 
+test('In the case of GET /stand failing to return cards, controller should return status code 400', async () => {
+  jest.spyOn(gameState, "getDeckId").mockImplementation(() => {
+      return "dvjw5ozpn8h4";
+  });
+
+  cardServer.use(
+      rest.get('https://deckofcardsapi.com/api/deck/dvjw5ozpn8h4/draw/', (req, res, ctx) => {
+          return res(ctx.json({
+              "success": false
+          }), ctx.status(400));
+      })
+  )
+
+  gameState.resetPlayerHand();
+  gameState.resetDealerHand();
+
+  const res = await request(app).get('/hit');
+
+  expect(res.statusCode).toEqual(400);
+  expect(res.body).toEqual({
+      success: false
+  });
+});
+
 test('GET /stand should return json containing the current hand and game state "WIN" when dealer draws cards to bust', async () => {
   jest.spyOn(gameState, "getDeckId").mockImplementation(() => {
     return "dvjw5ozpn8h4";

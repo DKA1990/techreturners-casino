@@ -6,6 +6,6 @@ export const getHit = async (req: Request, res: Response) => {
     if (hitCard.cards.length > 0) {
         res.json(hitCard).status(200);
     } else {
-        res.status(400);
+        res.status(400).json({"success": false});
     }
 };

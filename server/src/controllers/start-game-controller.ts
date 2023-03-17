@@ -6,6 +6,6 @@ export const getStart = async (req: Request, res: Response) => {
     if (initialState.cards.length > 0 && initialState.dealerCards.length > 0) {
         res.json(initialState).status(200);
     } else {
-        res.status(400);
+        res.status(400).json({"success": false});
     }
 };

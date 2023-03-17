@@ -1,6 +1,6 @@
 import React from "react";
 import { useGame } from "../context/game_provider";
-import { GameState, Card } from "../types/game-types";
+import { GameState } from "../types/game-types";
 import AppButton from "./AppButton";
 
 const StandControl: React.FC = () => {

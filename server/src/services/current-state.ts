@@ -2,8 +2,8 @@ import { Card, GameState } from "../types/game-types";
 
 let gameState: GameState;
 let deckId: string;
-let playerHand: Card[] = [];
-let dealerHand: Card[] = [];
+const playerHand: Card[] = [];
+const dealerHand: Card[] = [];
 
 export const getGameState = () => {
     return gameState;

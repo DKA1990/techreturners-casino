@@ -41,7 +41,7 @@ afterAll(() => {
   cardServer.close();
 });
 
-test('GET /stand should return json containing the current hand and game state "STANDING"', async () => {
+test('GET /stand should return json containing the current hand and game state "WIN" when dealer draws cards to bust', async () => {
   jest.spyOn(gameState, "getDeckId").mockImplementation(() => {
     return "dvjw5ozpn8h4";
   });
@@ -74,5 +74,195 @@ test('GET /stand should return json containing the current hand and game state "
       }
     ],
     stateOfGame: "WIN",
+  });
+});
+
+test('GET /stand should return json containing the current hand and game state "WIN" when player wins', async () => {
+  jest.spyOn(gameState, "getDeckId").mockImplementation(() => {
+    return "dvjw5ozpn8h4";
+  });
+
+  jest.spyOn(gameState, "getPlayerHand").mockImplementation(() => {
+    return [
+      {
+        value: "10",
+        suit: "HEARTS",
+        pointValue: 10,
+        image: "https://deckofcardsapi.com/static/img/10H.png"
+      },
+      {
+        value: "9",
+        suit: "CLUBS",
+        pointValue: 9,
+        image: "https://deckofcardsapi.com/static/img/9C.png"
+      },
+      {
+        value: "2",
+        suit: "CLUBS",
+        pointValue: 2,
+        image: "https://deckofcardsapi.com/static/img/2C.png"
+      }   
+    ]
+  });
+
+  jest.spyOn(gameState, "getDealerHand").mockImplementation(() => {
+    return [
+      {
+        value: "JACK",
+        suit: "HEARTS",
+        pointValue: 10,
+        image: "https://deckofcardsapi.com/static/img/JH.png"
+      },
+      {
+        value: "KING",
+        suit: "DIAMONDS",
+        pointValue: 10,
+        image: "https://deckofcardsapi.com/static/img/KD.png"
+      } 
+    ]
+  });
+
+  gameState.resetPlayerHand();
+
+  const res = await request(app).get("/stand");
+
+  expect(res.statusCode).toEqual(200);
+  expect(res.body).toEqual({
+    cards: [
+      {
+        value: "10",
+        suit: "HEARTS",
+        pointValue: 10,
+        image: "https://deckofcardsapi.com/static/img/10H.png"
+      },
+      {
+        value: "9",
+        suit: "CLUBS",
+        pointValue: 9,
+        image: "https://deckofcardsapi.com/static/img/9C.png"
+      },
+      {
+        value: "2",
+        suit: "CLUBS",
+        pointValue: 2,
+        image: "https://deckofcardsapi.com/static/img/2C.png"
+      }
+    ],
+    dealerCards: [
+      {
+        value: "JACK",
+        suit: "HEARTS",
+        pointValue: 10,
+        image: "https://deckofcardsapi.com/static/img/JH.png"
+      },
+      {
+        value: "KING",
+        suit: "DIAMONDS",
+        pointValue: 10,
+        image: "https://deckofcardsapi.com/static/img/KD.png"
+      }
+    ],
+    stateOfGame: "WIN",
+  });
+});
+
+test('GET /stand should return json containing the current hand and game state "DRAW" when game is a draw', async () => {
+  jest.spyOn(gameState, "getDeckId").mockImplementation(() => {
+    return "dvjw5ozpn8h4";
+  });
+
+  jest.spyOn(gameState, "getPlayerHand").mockImplementation(() => {
+    return [
+      {
+        value: "10",
+        suit: "HEARTS",
+        pointValue: 10,
+        image: "https://deckofcardsapi.com/static/img/10H.png"
+      },
+      {
+        value: "9",
+        suit: "CLUBS",
+        pointValue: 9,
+        image: "https://deckofcardsapi.com/static/img/9C.png"
+      },
+      {
+        value: "2",
+        suit: "CLUBS",
+        pointValue: 2,
+        image: "https://deckofcardsapi.com/static/img/2C.png"
+      }   
+    ]
+  });
+
+  jest.spyOn(gameState, "getDealerHand").mockImplementation(() => {
+    return [
+      {
+        value: "10",
+        suit: "HEARTS",
+        pointValue: 10,
+        image: "https://deckofcardsapi.com/static/img/10H.png"
+      },
+      {
+        value: "9",
+        suit: "CLUBS",
+        pointValue: 9,
+        image: "https://deckofcardsapi.com/static/img/9C.png"
+      },
+      {
+        value: "2",
+        suit: "CLUBS",
+        pointValue: 2,
+        image: "https://deckofcardsapi.com/static/img/2C.png"
+      }
+    ]
+  });
+
+  gameState.resetPlayerHand();
+
+  const res = await request(app).get("/stand");
+
+  expect(res.statusCode).toEqual(200);
+  expect(res.body).toEqual({
+    cards: [
+      {
+        value: "10",
+        suit: "HEARTS",
+        pointValue: 10,
+        image: "https://deckofcardsapi.com/static/img/10H.png"
+      },
+      {
+        value: "9",
+        suit: "CLUBS",
+        pointValue: 9,
+        image: "https://deckofcardsapi.com/static/img/9C.png"
+      },
+      {
+        value: "2",
+        suit: "CLUBS",
+        pointValue: 2,
+        image: "https://deckofcardsapi.com/static/img/2C.png"
+      }
+    ],
+    dealerCards: [
+      {
+        value: "10",
+        suit: "HEARTS",
+        pointValue: 10,
+        image: "https://deckofcardsapi.com/static/img/10H.png"
+      },
+      {
+        value: "9",
+        suit: "CLUBS",
+        pointValue: 9,
+        image: "https://deckofcardsapi.com/static/img/9C.png"
+      },
+      {
+        value: "2",
+        suit: "CLUBS",
+        pointValue: 2,
+        image: "https://deckofcardsapi.com/static/img/2C.png"
+      }
+    ],
+    stateOfGame: "DRAW",
   });
 });

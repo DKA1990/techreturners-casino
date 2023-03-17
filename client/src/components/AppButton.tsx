@@ -6,6 +6,6 @@ type Props = React.DetailedHTMLProps<
 >;
 
 const AppButton = (props: Props) => {
-  return <button {...props} />;
+  return <button {...props} className='App-btn' />;
 };
 export default AppButton;

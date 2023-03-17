@@ -10,6 +10,6 @@ export const HitGameControl : React.FC = () => {
     };
 
     return (
-        <AppButton onClick={handleClick}>Hit</AppButton>
+        <AppButton onClick={handleClick} disabled={isFetching}>Hit</AppButton>
     )
 }

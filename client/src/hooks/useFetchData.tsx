@@ -7,12 +7,12 @@ export function isError(e: unknown): e is Error {
 }
 
 export function useFetchData<TResponse>(url: string) {
-  const [isFetching, setIsFetching] = useState(true);
+  const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState("");
   const [status, setStatus] = useState<number>();
 
   const [toCallApi, setApiExecution] = useState(false);
-  const { stateOfGame, setStateOfGame, cards, setCards } = useGame();
+  const { setStateOfGame, setCards } = useGame();
 
   const execute = () => {
     console.log("executing now");
@@ -21,6 +21,7 @@ export function useFetchData<TResponse>(url: string) {
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsFetching(true);
       try {
         const response = await fetch(url);
         if (response.status === 200) {
@@ -28,6 +29,7 @@ export function useFetchData<TResponse>(url: string) {
           if (isSuccessResponse(json)) {
             setStateOfGame(json.stateOfGame);
             setCards(json.cards);
+            setApiExecution(false);
           }
         }
         setIsFetching(false);
@@ -37,6 +39,7 @@ export function useFetchData<TResponse>(url: string) {
           setError(e.message);
         }
         setIsFetching(false);
+        setApiExecution(false);
       }
     };
     if (toCallApi) {

@@ -1,4 +1,4 @@
-export type GameState = "INPLAY" | "BUST" | "BLACKJACK" | "STANDING";
+export type GameState = "INPLAY" | "BUST" | "BLACKJACK" | "STANDING" | "WIN" | "LOSE" | "DRAW";
 export type Value =
   | "ACE"
   | "2"

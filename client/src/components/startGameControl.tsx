@@ -13,5 +13,9 @@ export const StartGameControl: React.FC = () => {
     execute();
   };
 
-  return <AppButton onClick={handleClick} disabled={isFetching}>Start Game</AppButton>;
+  return (
+    <AppButton onClick={handleClick} disabled={isFetching}>
+      Start Game
+    </AppButton>
+  );
 };

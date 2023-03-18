@@ -6,7 +6,7 @@ import DisplayCard from "./DisplayCard";
 const calculateTotal = (cards: Card[]) => {
   let total = 0;
 
-  for (let card of cards) {
+  for (const card of cards) {
     total += card.pointValue;
   }
   return total;

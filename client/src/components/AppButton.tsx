@@ -1,6 +1,6 @@
 import React from "react";
 
-type Props = React.DetailedHTMLProps<
+export type Props = React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 >;

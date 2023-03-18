@@ -2,6 +2,7 @@ import React from 'react';
 import { useGame } from "../context/game_provider";
 import { BustControl } from './bustControl';
 import { HitGameControl } from './hitGameControl';
+import StandControl from "./standControl";
 import { StartGameControl } from './startGameControl';
 
 export const Controls : React.FC = () => {
@@ -12,7 +13,7 @@ export const Controls : React.FC = () => {
             {stateOfGame === "new" && <StartGameControl />}
             {stateOfGame === "INPLAY" && <HitGameControl />}
             {/* stateOfGame === "INPLAY" && <InPlay controls />*/}
-            {/* stateOfGame === "Standing" && <Standing controls />*/}
+            {stateOfGame === ("INPLAY" || "STANDING") && <StandControl />}
             {/* stateOfGame === "BlackJack" && <BlackJack controls />*/}
             {stateOfGame === "BUST" && <BustControl />}
         </div>

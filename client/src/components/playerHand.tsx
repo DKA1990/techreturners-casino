@@ -16,6 +16,7 @@ const PlayerHand: React.FC = () => {
   const { cards } = useGame();
   return (
     <div>
+      {cards.length >= 1 && <p>Cards</p>}
       {cards.map((card) => (
         <DisplayCard card={card} />
       ))}

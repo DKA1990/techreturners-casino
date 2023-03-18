@@ -16,8 +16,9 @@ const PlayerHand: React.FC = () => {
   const { cards } = useGame();
   return (
     <div>
+      {cards.length >= 1 && <p>Cards</p>}
       {cards.map((card) => (
-        <DisplayCard card={card} />
+        <DisplayCard key={card.value + card.suit} card={card} />
       ))}
       <div>Player Hand Total: {calculateTotal(cards)}</div>
     </div>

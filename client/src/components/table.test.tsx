@@ -86,8 +86,7 @@ then the cards are displayed`, async () => {
   const startButton = screen.getByText("Start Game");
   userEvent.click(startButton);
   await waitFor(() => screen.findByText("Cards"));
-  expect(screen.getByText("INPLAY")).toBeInTheDocument();
-  expect(screen.getAllByText("CLUBS")[0]).toBeInTheDocument();
+  expect(screen.getAllByAltText(/CLUBS/i)[0]).toBeInTheDocument();
 });
 
 test(`given the game is INPLAY, 
@@ -103,9 +102,9 @@ then the updated cards and stateOfGame are displayed`, async () => {
   await waitFor(() => screen.findByText("Cards"));
   const hitButton = screen.getByText("Hit");
   userEvent.click(hitButton);
-  await waitFor(() => screen.findAllByText("HEARTS"));
-  expect(screen.getByText("BUST")).toBeInTheDocument();
-  expect(screen.getAllByText("HEARTS")[0]).toBeInTheDocument();
+  await waitFor(() => screen.findAllByAltText(/HEARTS/i));
+  expect(screen.getByText("BUST!")).toBeInTheDocument();
+  expect(screen.getAllByAltText(/HEARTS/i)[0]).toBeInTheDocument();
 });
 
 test(`given the game has pressed HIT, 
@@ -121,8 +120,8 @@ then BUST is displayed to the user and a button which resets the table is shown`
   await waitFor(() => screen.findByText("Cards"));
   const hitButton = screen.getByText("Hit");
   userEvent.click(hitButton);
-  await waitFor(() => screen.findAllByText("HEARTS"));
-  expect(screen.getByText("BUST")).toBeInTheDocument();
+  await waitFor(() => screen.findAllByAltText(/HEARTS/i));
+  expect(screen.getByText("BUST!")).toBeInTheDocument();
   const reset = screen.getByText("OK");
   userEvent.click(reset);
   expect(screen.getByText("Start Game")).toBeInTheDocument();

@@ -1,7 +1,7 @@
 import React, { useState, createContext, useContext } from "react";
 import { Card, GameState } from "../types/game-types";
 
-interface IGameContext {
+export interface IGameContext {
   stateOfGame: GameState | "new";
   setStateOfGame: (state: GameState | "new") => void;
   cards: Array<Card>;

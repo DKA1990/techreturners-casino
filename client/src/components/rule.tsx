@@ -25,12 +25,25 @@ export const Rules: React.FC = () => {
           </p>
           <p>
             3. The aim of the for the player is to get their hand value to 21,
-            or as close to 21 and possible without going over.
+            or as close to 21 and possible without going over. An intial hand
+            of 21 is considered "Blackjack" and results in an instant win, or
+            draw in the case of a dealer also having blackjack.
           </p>
           <p>
-            4. In the case of the value of player's hand exceeding 21, they lose
-            the game. At the moment this is inconsequential but they should be
-            ashamed!
+            4. During play the player has two choices. "Hit" deals the player
+            a new card to be added to their hand. "Stand" lets the player
+            keep their current hand.
+          </p>
+          <p>
+            5. In the case of the value of player's hand exceeding 21, they are
+            considered bust and lose the game.
+          </p>
+          <p>
+            6. After a player stands the dealers hand is then revealed and resolved. 
+            If the dealers hand goes above 21 the dealer is considered bust and 
+            the player wins. If neither player or dealer are bust, the hand with 
+            the highest value is the winner. Hands being the same value results in 
+            a draw.
           </p>
           <img
             className="blackjack-rules__img"

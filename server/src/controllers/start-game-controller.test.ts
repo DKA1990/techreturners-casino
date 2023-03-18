@@ -45,7 +45,7 @@ const cardServer = setupServer(
 );
 
 beforeAll(() => {
-    cardServer.listen();
+    cardServer.listen({ onUnhandledRequest: "bypass" });
 });
 afterEach(() => {
     cardServer.resetHandlers();

@@ -1,9 +1,7 @@
 import React from "react";
 import { Card } from "../types/game-types";
+import { useGame } from "../context/game_provider";
 
-interface HandProps {
-  cards: Card[];
-}
 const calculateTotal = (cards: Card[]) => {
   let total = 0;
   let hasAce = false;
@@ -19,7 +17,8 @@ const calculateTotal = (cards: Card[]) => {
   return total;
 };
 
-const PlayerHand: React.FC<HandProps> = ({ cards }) => {
+const PlayerHand: React.FC = () => {
+  const { cards } = useGame();
   return (
     <div>
       {cards.map((card, index) => card.value)}

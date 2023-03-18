@@ -7,8 +7,9 @@ export const DealerHand : React.FC = () => {
     return (
         <div>
             {dealerCards.length >= 1 && <p>DealerCards</p>}
+            {dealerCards.length === 1 && <img alt="dealer's card face down" src={require("../images/back_of_card.png")} className="card" />}
             {dealerCards.map((card, index) => (
-            <DisplayCard key={index} card={card} />
+                <DisplayCard key={index} card={card} />
             ))}
         </div>
     )

@@ -1,5 +1,7 @@
 import { getDealerHand, getDeckId, setDealerHand } from "./current-state";
 import { Card, PointValue } from "../types/game-types";
+import { hasBust } from "./bust";
+import { checkAces } from "./aces-check";
 
 export async function drawCards(numOfCards: 1 | 2, hand?: Card[]) {
     const drawnCards: Card[] = [];
@@ -56,6 +58,9 @@ export async function drawDealerCards() {
             break;
         }
         setDealerHand(drawnCard);
+        if (hasBust(getDealerHand())) {
+            checkAces(getDealerHand());
+        }
         dealerValue = dealerValue + drawnCard[0].pointValue;
     }
 };

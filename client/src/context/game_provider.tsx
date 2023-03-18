@@ -3,7 +3,7 @@ import { Card, GameState } from "../types/game-types";
 
 interface IGameContext {
     stateOfGame: GameState | "new";
-    setStateOfGame: (state: GameState) => void;
+    setStateOfGame: (state: GameState | "new") => void;
     cards: Array<Card>;
     setCards: (cards: Array<Card>) => void;
 }

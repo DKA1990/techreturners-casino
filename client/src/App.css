@@ -30,3 +30,7 @@ body {
 .blackjack-rules {
   color: white;
 }
+
+.card {
+  width: 226px
+}

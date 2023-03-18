@@ -12,7 +12,7 @@ export function useFetchData<TResponse>(url: string) {
   const [status, setStatus] = useState<number>();
 
   const [toCallApi, setApiExecution] = useState(false);
-  const { setStateOfGame, setCards } = useGame();
+  const { setStateOfGame, setCards, setDealerCards } = useGame();
 
   const execute = () => {
     console.log("executing now");
@@ -29,6 +29,7 @@ export function useFetchData<TResponse>(url: string) {
           if (isSuccessResponse(json)) {
             setStateOfGame(json.stateOfGame);
             setCards(json.cards);
+            json.dealerCards && setDealerCards(json.dealerCards);
             setApiExecution(false);
           }
         }

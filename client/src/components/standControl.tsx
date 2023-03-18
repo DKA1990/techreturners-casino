@@ -1,20 +1,17 @@
 import React from "react";
-import { useGame } from "../context/game_provider";
-import { GameState } from "../types/game-types";
+import { useFetchData } from "../hooks/useFetchData";
 import AppButton from "./AppButton";
 
 const StandControl: React.FC = () => {
-  const { stateOfGame, setStateOfGame } = useGame();
+  const { isFetching, error, status, execute } = useFetchData("http://localhost:8080/stand");
 
-  const handleStandClick = () => {
-    const newStateOfGame: GameState = "STANDING";
-    setStateOfGame(newStateOfGame);
-    console.log(newStateOfGame);
+  const handleClick = () => {
+    execute();
   };
 
   return (
     <div>
-      <AppButton onClick={handleStandClick}>Stand</AppButton>
+      <AppButton onClick={handleClick}>Stand</AppButton>
     </div>
   );
 };

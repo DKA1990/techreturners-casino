@@ -1,6 +1,8 @@
 import React from "react";
 import { useFetchData } from "../hooks/useFetchData";
 import AppButton from "./AppButton";
+import '../styles/AppButton.css'
+
 
 export const StartGameControl: React.FC = () => {
   const { isFetching, error, status, execute } = useFetchData(

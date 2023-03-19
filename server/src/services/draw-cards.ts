@@ -61,6 +61,6 @@ export async function drawDealerCards() {
         if (hasBust(getDealerHand())) {
             checkAces(getDealerHand());
         }
-        dealerValue = dealerValue + drawnCard[0].pointValue;
+        dealerValue = getDealerHand().reduce((acc, cur) => acc + cur.pointValue, 0);
     }
 };

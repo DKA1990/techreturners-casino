@@ -1,6 +1,6 @@
 
 .App-btn {
-    font-size: 1.2rem;
+    font-size: 1.2em;
     padding: 0.5rem 1rem;
     background-color: var(--yellow);
     color: black;
@@ -9,7 +9,8 @@
     cursor: pointer;
     transition: all 0.3s ease;
     text-transform: uppercase;
-    margin: 1rem;;
+    margin: 1rem;
+    min-width: 95px;
   }
   
   .App-btn:hover {
@@ -23,15 +24,23 @@
   
   @media screen and (max-width: 600px) {
     .App-btn {
-      font-size: 1rem;
+      font-size: 1em;
       padding: 0.25rem 0.5rem;
-      margin: 0.5rem
+      margin: 0.5rem;
+      min-width: 65px;
+    }
+
+    .secondary-btn {
+      font-size: 0.65em;
+      padding: 0.25rem 0.5rem;
+      margin: 0.5rem;
+      min-width: 65px;
     }
 }
 
 
 .secondary-button {
-  font-size: 0.8rem;
+  font-size: 0.8em;
   padding: 0.5rem 1rem;
   background-color: var(--green);
   color: white;
@@ -40,18 +49,11 @@
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: uppercase;
-  margin: 1rem;;
+  margin: 1rem;
+  min-width: 95px;
 }
 
 .secondary-button:hover {
   background-color: #fff;
   color: #000;
-}
-
-@media screen and (max-width: 600px) {
-  .App-btn {
-    font-size: 1rem;
-    padding: 0.25rem 0.5rem;
-    margin: 0.5rem
-  }
 }

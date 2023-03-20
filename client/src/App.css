@@ -5,6 +5,10 @@
   --body-text: 'Quicksand', sans-serif;
 }
 
+.App {
+  font-size: 1rem;
+}
+
 body {
   margin: 0;
   background-color: var(--green);
@@ -22,17 +26,9 @@ body {
   color: white;
 }
 
-.empty-card {
-  border: 0.25rem solid;
-  width: 113px;
-  height: 157px;
-  border-radius: 2rem;
-  margin: 2rem auto;
-}
-
 .main-title {
   font-family: var(--title-text);
-  font-size: 2.5rem;
+  font-size: 2.5em;
   text-transform: uppercase;
   letter-spacing: 0.8rem;
   color: white;
@@ -51,6 +47,7 @@ body {
 
 .card {
   height: 200px;
+  width: 143.95px;
   margin: 0 0.5rem
 }
 
@@ -65,6 +62,24 @@ body {
 
 .outcome {
   font-family: var(--title-text);
-  font-size: 4rem;
+  font-size: 4em;
   margin: 1rem 0 0 0;
+}
+
+@media screen and (max-width: 600px) {
+  .card {
+    width: 107.95px;
+    height: 150px;
+  }
+
+  .App {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .card {
+    width: 72px;
+    height: 100px;
+  }
 }

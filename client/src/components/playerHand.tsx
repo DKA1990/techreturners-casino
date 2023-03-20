@@ -16,8 +16,13 @@ const PlayerHand: React.FC = () => {
   const { cards } = useGame();
   return (
     <div>
-      {cards.length < 1 && <div className="empty-card"></div>}
-      {cards.length >= 1 && <p>Cards</p>}
+      {cards.length > 1 && <p>Player Hand</p>}
+      {cards.length < 1 && 
+        <>
+          <img alt="face down card" src={require("../images/back_of_card.png")} className="card" />
+          <img alt="face down card" src={require("../images/back_of_card.png")} className="card" />
+        </>
+      }
       {cards.map((card) => (
         <DisplayCard key={card.value + card.suit} card={card} />
       ))}

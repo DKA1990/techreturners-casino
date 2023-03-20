@@ -1,14 +1,26 @@
-# techreturners-casino
+# techreturners-casino-  Full Stack application using React, Express.js, and TypeScript - Group Project
 
-This is a BlackJack game. The objective of the game is to beat the dealer, which can be done in the following ways:
+##About
+This project is a full-stack blackjack game using React, Express.js, and TypeScript. It allows users to draw cards, play against the dealer, and try to beat the house!
 
-->Get 21 points on the player's first two cards (called a blackjack), without a dealer blackjack;
-->Reach a final score higher than the dealer without exceeding 21; or
-->Let the dealer draw additional cards until his or her hand exceeds 21.
+## Getting Started
+To get started, clone this repository to your local machine:
 
-The game is implemented with standard 1 deck of cards.It has implementation of two standard options for player after receiving two initial cards:
+git clone https://github.com/DKA1990/techreturners-casino.git
 
-HIT and STAND
+cd techreturners-casino
 
-HIT:  Take another card from deck
-STAND:Player takes no more cards 
+Next, install the dependencies for both the backend and frontend:
+
+npm install & cd client and npm start
+
+## Running the Application
+
+npm start & cd /client and npm start
+
+## Technologies Used
+React
+TypeScript
+Express.js
+Axios
+Deck of Cards API

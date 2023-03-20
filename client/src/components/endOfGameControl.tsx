@@ -13,7 +13,7 @@ export const EndOfGameControl : React.FC = () => {
 
   return (
     <div>
-      <p>{`${stateOfGame}!`}</p>
+      <p className="outcome">{`${stateOfGame}!`}</p>
       <AppButton onClick={handleClick}>OK</AppButton>
     </div>
   );

@@ -8,7 +8,7 @@ import { Rules } from "./components/rule";
 function App() {
   return (
     <div className="App">
-      <h1 className="main-title">TechReturners Casino</h1>
+      <h1 className="main-title">Blackjack</h1>
       <GameProvider>
         <Rules />
         <Table />

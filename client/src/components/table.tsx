@@ -8,7 +8,6 @@ export const Table: React.FC = () => {
     <main className="table">
       <DealerHand />
       <Controls />
-      {/** TO DO: loading and error states to be considered */}
       <PlayerHand />
     </main>
   );

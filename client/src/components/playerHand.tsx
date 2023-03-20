@@ -16,11 +16,12 @@ const PlayerHand: React.FC = () => {
   const { cards } = useGame();
   return (
     <div>
+      {cards.length < 1 && <div className="empty-card"></div>}
       {cards.length >= 1 && <p>Cards</p>}
       {cards.map((card) => (
         <DisplayCard key={card.value + card.suit} card={card} />
       ))}
-      <div>Player Hand Total: {calculateTotal(cards)}</div>
+      <h2>Player Hand Total: {calculateTotal(cards)}</h2>
     </div>
   );
 };

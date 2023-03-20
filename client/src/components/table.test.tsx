@@ -29,6 +29,34 @@ export const handlers = [
       })
     );
   }),
+  rest.get("http://localhost:8080/hit", (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        "cards": [
+            {
+                "value": 'KING',
+                "suit": "HEARTS",
+                "pointValue": 10,
+                "image": "https://deckofcardsapi.com/static/img/KH.png"
+            },
+            {
+                "value": 'KING',
+                "suit": "CLUBS",
+                "pointValue": 10,
+                "image": "https://deckofcardsapi.com/static/img/KC.png"
+            },
+            {
+                "value": "8",
+                "suit": "HEARTS",
+                "pointValue": 8,
+                "image": "https://deckofcardsapi.com/static/img/8H.png"
+            }
+        ],
+        "stateOfGame": "BUST"
+    })
+    );
+  }),
 ];
 
 const server = setupServer(...handlers);
@@ -58,6 +86,43 @@ then the cards are displayed`, async () => {
   const startButton = screen.getByText("Start Game");
   userEvent.click(startButton);
   await waitFor(() => screen.findByText("Cards"));
-  expect(screen.getByText("INPLAY")).toBeInTheDocument();
-  expect(screen.getAllByText("CLUBS")[0]).toBeInTheDocument();
+  expect(screen.getAllByAltText(/CLUBS/i)[0]).toBeInTheDocument();
+});
+
+test(`given the game is INPLAY, 
+when the hit button is pressed, 
+then the updated cards and stateOfGame are displayed`, async () => {
+  render(
+    <GameProvider>
+      <Table />
+    </GameProvider>
+  );
+  const startButton = screen.getByText("Start Game");
+  userEvent.click(startButton);
+  await waitFor(() => screen.findByText("Cards"));
+  const hitButton = screen.getByText("Hit");
+  userEvent.click(hitButton);
+  await waitFor(() => screen.findAllByAltText(/HEARTS/i));
+  expect(screen.getByText("BUST!")).toBeInTheDocument();
+  expect(screen.getAllByAltText(/HEARTS/i)[0]).toBeInTheDocument();
+});
+
+test(`given the game has pressed HIT, 
+when the result is BUST, 
+then BUST is displayed to the user and a button which resets the table is shown`, async () => {
+  render(
+    <GameProvider>
+      <Table />
+    </GameProvider>
+  );
+  const startButton = screen.getByText("Start Game");
+  userEvent.click(startButton);
+  await waitFor(() => screen.findByText("Cards"));
+  const hitButton = screen.getByText("Hit");
+  userEvent.click(hitButton);
+  await waitFor(() => screen.findAllByAltText(/HEARTS/i));
+  expect(screen.getByText("BUST!")).toBeInTheDocument();
+  const reset = screen.getByText("OK");
+  userEvent.click(reset);
+  expect(screen.getByText("Start Game")).toBeInTheDocument();
 });

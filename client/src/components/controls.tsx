@@ -1,5 +1,9 @@
 import React from 'react';
 import { useGame } from "../context/game_provider";
+// import { BustControl } from './bustControl';
+import { EndOfGameControl } from './endOfGameControl';
+import { HitGameControl } from './hitGameControl';
+import StandControl from "./standControl";
 import { StartGameControl } from './startGameControl';
 
 export const Controls : React.FC = () => {
@@ -8,10 +12,9 @@ export const Controls : React.FC = () => {
     return (
         <div>
             {stateOfGame === "new" && <StartGameControl />}
-            {/* stateOfGame === "INPLAY" && <InPlay controls />*/}
-            {/* stateOfGame === "Standing" && <Standing controls />*/}
-            {/* stateOfGame === "BlackJack" && <BlackJack controls />*/}
-            {/* stateOfGame === "Bust" && <Bust controls />*/}
+            {stateOfGame === "INPLAY" && <HitGameControl />}
+            {stateOfGame === ("INPLAY" || "STANDING") && <StandControl />}
+            {stateOfGame !== "new" && stateOfGame !== "INPLAY" && <EndOfGameControl />}
         </div>
     )
 }

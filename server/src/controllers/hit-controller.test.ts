@@ -27,7 +27,7 @@ const cardServer = setupServer(
 );
 
 beforeAll(() => {
-    cardServer.listen();
+    cardServer.listen({ onUnhandledRequest: "bypass" });
 });
 afterEach(() => {
     cardServer.resetHandlers();
@@ -36,12 +36,37 @@ afterAll(() => {
     cardServer.close();
 });
 
+test('In the case of GET /hit failing to return cards, controller should return status code 400', async () => {
+    jest.spyOn(gameState, "getDeckId").mockImplementation(() => {
+        return "dvjw5ozpn8h4";
+    });
+
+    cardServer.use(
+        rest.get('https://deckofcardsapi.com/api/deck/dvjw5ozpn8h4/draw/', (req, res, ctx) => {
+            return res(ctx.json({
+                "success": false
+            }), ctx.status(400));
+        })
+    )
+
+    gameState.resetPlayerHand();
+    gameState.resetDealerHand();
+
+    const res = await request(app).get('/hit');
+
+    expect(res.statusCode).toEqual(400);
+    expect(res.body).toEqual({
+        success: false
+    });
+});
+
 test('GET /hit on an empty hand should return json containing one card and game state "INPLAY"', async () => {
     jest.spyOn(gameState, "getDeckId").mockImplementation(() => {
         return "dvjw5ozpn8h4";
     });
 
     gameState.resetPlayerHand();
+    gameState.resetDealerHand();
 
     const res = await request(app).get('/hit');
 
@@ -65,6 +90,7 @@ test('GET /hit should return json containing the full hand of cards and game sta
     });
 
     gameState.resetPlayerHand();
+    gameState.resetDealerHand();
     gameState.setPlayerHand([
         {
             value: 'KING',

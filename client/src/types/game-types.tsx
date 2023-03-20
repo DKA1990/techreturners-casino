@@ -1,4 +1,4 @@
-export type GameState = "INPLAY" | "BUST" | "BLACKJACK" | "STANDING";
+export type GameState = "INPLAY" | "BUST" | "BLACKJACK" | "STANDING" | "WIN" | "LOSE" | "DRAW";
 export type Value =
   | "ACE"
   | "2"
@@ -22,15 +22,16 @@ export interface Card {
   image: string;
 }
 
-export interface StartGameResponse {
+export interface ServerResponse {
   stateOfGame: GameState;
   cards: Array<Card>;
+  dealerCards?: Array<Card>;
 }
 
-export function isSuccessResponse(data: unknown): data is StartGameResponse {
+export function isSuccessResponse(data: unknown): data is ServerResponse {
   return (
     data !== undefined &&
-    (data as StartGameResponse).stateOfGame !== undefined &&
-    (data as StartGameResponse).cards !== undefined
+    (data as ServerResponse).stateOfGame !== undefined &&
+    (data as ServerResponse).cards !== undefined
   );
 }

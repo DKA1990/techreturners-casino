@@ -5,6 +5,6 @@ interface CardProps {
     card: Card;
   }
   const DisplayCard: React.FC<CardProps> = ({ card }) => {
-    return <img src={card.image} alt={`${card.value} ${card.suit}`} />;
+    return <img className="card" src={card.image} alt={`${card.value} ${card.suit}`} />;
   };
   export default DisplayCard;

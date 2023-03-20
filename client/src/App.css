@@ -1,5 +1,6 @@
 :root {
   --green: #35654d;
+  --yellow: #F5F749;
   --title-text: 'Rye', cursive;
   --body-text: 'Quicksand', sans-serif;
 }
@@ -21,16 +22,56 @@ body {
   color: white;
 }
 
-.main-title {
+.empty-card {
+  border: 0.25rem solid;
+  width: 113px;
+  height: 157px;
+  border-radius: 2rem;
+  margin: 2rem auto;
+}
+
+/* .main-title {
   font-family: var(--title-text);
   font-size: 3rem;
   color: white;
+  margin-bottom: 0;
+} */
+
+.main-title {
+  font-family: var(--title-text);
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8rem;
+  color: white;
+  margin-bottom: 0;
 }
 
 .blackjack-rules {
   color: white;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.rules-step {
+  text-align: left;
 }
 
 .card {
-  width: 226px
+  height: 200px;
+  margin: 0 0.5rem
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  border: 0.25rem solid;
+  width: 60%;
+  border-radius: 2rem;
+  margin: 2rem auto;
+}
+
+.outcome {
+  font-family: var(--title-text);
+  font-size: 4rem;
+  margin: 1rem 0 0 0;
 }

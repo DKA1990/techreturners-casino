@@ -10,35 +10,35 @@ export const Rules: React.FC = () => {
 
   return (
     <section className="blackjack-rules">
-      <AppButton onClick={handleRules}>
+      <button className="secondary-button" onClick={handleRules}>
         {showRules ? "Hide Rules" : "Show Rules"}
-      </AppButton>
+      </button>
       {showRules && (
         <>
           <h2>BlackJack Rules</h2>
-          <p>1. Blackjack starts with the player being dealt two cards.</p>
-          <p>
+          <p className="rules-step">1. Blackjack starts with the player being dealt two cards.</p>
+          <p className="rules-step">
             2. All cards are considered as their face value in Blackjack.
             Picture cards (Jacks, Queens and Kings) all have a value of 10. Aces
             count as 11 unless the player would bust, in which case they are
             counted as 1.
           </p>
-          <p>
+          <p className="rules-step">
             3. The aim of the for the player is to get their hand value to 21,
             or as close to 21 and possible without going over. An intial hand
             of 21 is considered "Blackjack" and results in an instant win, or
             draw in the case of a dealer also having blackjack.
           </p>
-          <p>
+          <p className="rules-step">
             4. During play the player has two choices. "Hit" deals the player
             a new card to be added to their hand. "Stand" lets the player
             keep their current hand.
           </p>
-          <p>
+          <p className="rules-step">
             5. In the case of the value of player's hand exceeding 21, they are
             considered bust and lose the game.
           </p>
-          <p>
+          <p className="rules-step">
             6. After a player stands the dealers hand is then revealed and resolved. 
             If the dealers hand goes above 21 the dealer is considered bust and 
             the player wins. If neither player or dealer are bust, the hand with 

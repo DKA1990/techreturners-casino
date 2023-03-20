@@ -44,6 +44,6 @@ test("renders BLACKJACK report when game state is reported as such", async () =>
     </GameProvider>
   );
   userEvent.click(screen.getByText("Start Game"));
-  await waitFor(() => screen.findByText("Cards"));
+  await waitFor(() => screen.findByText("Player Hand"));
   expect(screen.getByText("BLACKJACK!")).toBeInTheDocument();
 });

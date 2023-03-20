@@ -85,7 +85,7 @@ then the cards are displayed`, async () => {
   );
   const startButton = screen.getByText("Start Game");
   userEvent.click(startButton);
-  await waitFor(() => screen.findByText("Cards"));
+  await waitFor(() => screen.findByText("Player Hand"));
   expect(screen.getAllByAltText(/CLUBS/i)[0]).toBeInTheDocument();
 });
 
@@ -99,7 +99,7 @@ then the updated cards and stateOfGame are displayed`, async () => {
   );
   const startButton = screen.getByText("Start Game");
   userEvent.click(startButton);
-  await waitFor(() => screen.findByText("Cards"));
+  await waitFor(() => screen.findByText("Player Hand"));
   const hitButton = screen.getByText("Hit");
   userEvent.click(hitButton);
   await waitFor(() => screen.findAllByAltText(/HEARTS/i));
@@ -117,7 +117,7 @@ then BUST is displayed to the user and a button which resets the table is shown`
   );
   const startButton = screen.getByText("Start Game");
   userEvent.click(startButton);
-  await waitFor(() => screen.findByText("Cards"));
+  await waitFor(() => screen.findByText("Player Hand"));
   const hitButton = screen.getByText("Hit");
   userEvent.click(hitButton);
   await waitFor(() => screen.findAllByAltText(/HEARTS/i));

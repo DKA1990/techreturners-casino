@@ -16,7 +16,7 @@ const PlayerHand: React.FC = () => {
   const { cards } = useGame();
   return (
     <div>
-      <p>Player Hand</p>
+      {cards.length > 1 && <p>Player Hand</p>}
       {cards.length < 1 && 
         <>
           <img alt="face down card" src={require("../images/back_of_card.png")} className="card" />

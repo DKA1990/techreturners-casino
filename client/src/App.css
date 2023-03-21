@@ -41,6 +41,11 @@ body {
   margin: 0 auto;
 }
 
+.blackjack-rules__img {
+  max-width: 450px;
+  width: 100%;
+}
+
 .rules-step {
   text-align: left;
 }

@@ -6,7 +6,7 @@ export const DealerHand : React.FC = () => {
 
     return (
         <div>
-            {dealerCards.length > 1 && <p>Dealer Hand</p>}
+            {dealerCards.length > 0 && <p>Dealer Hand</p>}
             {dealerCards.length < 1 && 
                 <>
                     <img alt="face down card" src={require("../images/back_of_card.png")} className="card" />
